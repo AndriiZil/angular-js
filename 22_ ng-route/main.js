@@ -1,12 +1,20 @@
-const app = angular.module('app', []);
+const app = angular.module('app', ['ngRoute']);
 
-app.directive('fooBar', function () {
+app.config(function ($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'home.html',
+            controller: 'homeCtrl'
+        })
 
-    return {
-        restrict: 'E',
-        templateUrl: 'bookmarks.html',
-        link: function (scope, element, attrs) {
-            console.log('directive');
-        }
-    }
+    $routeProvider
+        .when('/posts', {
+            templateUrl: 'posts.html'
+        })
 });
+
+app.controller('homeCtrl', function ($scope) {
+    $scope.model = {
+        message: 'Message from Controller'
+    }
+})

@@ -1,12 +1,12 @@
 const app = angular.module('app', []);
 
-app.directive('fooBar', function () {
+app.directive('uiSource', function () {
 
     return {
-        restrict: 'E',
-        templateUrl: 'bookmarks.html',
-        link: function (scope, element, attrs) {
-            console.log('directive');
+        compile: function (elem) {
+            console.log(elem);
+            let pre = angular.element('<pre class="prettyprint"></pre>');
+            console.log(pre);
         }
     }
 });
